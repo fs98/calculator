@@ -4,31 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcinator</title>
+    <title>Calckinator</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./calculator.js"></script>
+    <script src="./calculator.js" defer></script>
   </head>
   <body>
     <header>
       <a href="#">
-        <img height="40" src="./images/calculator.png" alt="calculator icon">
-        <span>Calcinator</span>
+        <span>Calckinator</span>
       </a>
       <a href="https://github.com/fs98/brainnest-js-assignment-pt2" target="_blank">
         <img height="40" src="./images/github.png" alt="">
       </a>
     </header>
     <main>
-      Welcome to Calcinator!
+
+      <div id="container">
+        <div id="display"></div>
+        <button type="button" class="clear" onclick="clearDisplay()">AC</button>
+        <button type="button" class="sign" onclick="inputSign('sign')">+/-</button>
+        <button type="button" class="percent" onclick="inputPercent('percent');">%</button>
+        <button type="button" class="operator" onclick="inputOperator('/')">/</button>
+        <button type="button" class="operand" onclick="inputOperand(7)">7</button>
+        <button type="button" class="operand" onclick="inputOperand(8)">8</button>
+        <button type="button" class="operand" onclick="inputOperand(9)">9</button>
+        <button type="button" class="operator" onclick="inputOperator('*')">*</button>
+        <button type="button" class="operand" onclick="inputOperand(4)">4</button>
+        <button type="button" class="operand" onclick="inputOperand(5)">5</button>
+        <button type="button" class="operand" onclick="inputOperand(6)">6</button>
+        <button type="button" class="operator" onclick="inputOperator('-')">-</button>
+        <button type="button" class="operand" onclick="inputOperand(1)">1</button>
+        <button type="button" class="operand" onclick="inputOperand(2)">2</button>
+        <button type="button" class="operand" onclick="inputOperand(3)">3</button>
+        <button type="button" class="operator" onclick="inputOperator('+')">+</button>
+        <button type="button" id="zero" class="operand" onclick="inputOperand(0)">0</button>
+        <button type="button" class="decimal" onclick="inputDecimal('.')">.</button>
+        <button type="button" class="equals" onclick="inputEquals('=')">=</button>
+      </div>
 
     </main>
     <footer>
       <p>Calculator written with Vanilla JS</p>
       <small>The fourth assignment in a Brainnest Front Training Program</small>
       <div>
-        <a href="https://www.flaticon.com/free-icons/calculator" target="_blank" title="calculator icons">
-          <small>Calculator icons created by Pixel perfect - Flaticon</small>
-        </a>
         <a href="https://www.flaticon.com/free-icons/github" target="_blank" title="github icons">
           <small>Github icons created by riajulislam - Flaticon</small>
         </a>
