@@ -19,27 +19,27 @@
     </header>
     <main>
 
-      <div id="container">
-        <div id="display"></div>
-        <button type="button" class="clear" onclick="clearDisplay()">AC</button>
-        <button type="button" class="sign" onclick="inputSign('sign')">+/-</button>
-        <button type="button" class="percent" onclick="inputPercent('percent');">%</button>
-        <button type="button" class="operator" onclick="inputOperator('/')">/</button>
-        <button type="button" class="operand" onclick="inputOperand(7)">7</button>
-        <button type="button" class="operand" onclick="inputOperand(8)">8</button>
-        <button type="button" class="operand" onclick="inputOperand(9)">9</button>
-        <button type="button" class="operator" onclick="inputOperator('*')">*</button>
-        <button type="button" class="operand" onclick="inputOperand(4)">4</button>
-        <button type="button" class="operand" onclick="inputOperand(5)">5</button>
-        <button type="button" class="operand" onclick="inputOperand(6)">6</button>
-        <button type="button" class="operator" onclick="inputOperator('-')">-</button>
-        <button type="button" class="operand" onclick="inputOperand(1)">1</button>
-        <button type="button" class="operand" onclick="inputOperand(2)">2</button>
-        <button type="button" class="operand" onclick="inputOperand(3)">3</button>
-        <button type="button" class="operator" onclick="inputOperator('+')">+</button>
-        <button type="button" id="zero" class="operand" onclick="inputOperand(0)">0</button>
-        <button type="button" class="decimal" onclick="inputDecimal('.')">.</button>
-        <button type="button" class="equals" onclick="inputEquals('=')">=</button>
+      <div id="calculator" class="grid-container">
+        <div id="display" class="grid-item"></div>
+        <button type="button" class="clear grid-item" onclick="clearDisplay()">AC</button>
+        <button type="button" class="sign grid-item" onclick="inputSign()">+/-</button>
+        <button type="button" class="percent grid-item" onclick="inputPercent('percent');">%</button>
+        <button type="button" class="operator grid-item" onclick="inputOperator('/')">/</button>
+        <button type="button" class="operand grid-item" onclick="inputNumber('7')">7</button>
+        <button type="button" class="operand grid-item" onclick="inputNumber('8')">8</button>
+        <button type="button" class="operand grid-item" onclick="inputNumber('9')">9</button>
+        <button type="button" class="operator grid-item" onclick="inputOperator('*')">*</button>
+        <button type="button" class="operand grid-item" onclick="inputNumber('4')">4</button>
+        <button type="button" class="operand grid-item" onclick="inputNumber('5')">5</button>
+        <button type="button" class="operand grid-item" onclick="inputNumber('6')">6</button>
+        <button type="button" class="operator grid-item" onclick="inputOperator('-')">-</button>
+        <button type="button" class="operand grid-item" onclick="inputNumber('1')">1</button>
+        <button type="button" class="operand grid-item" onclick="inputNumber('2')">2</button>
+        <button type="button" class="operand grid-item" onclick="inputNumber('3')">3</button>
+        <button type="button" class="operator grid-item" onclick="inputOperator('+')">+</button>
+        <button type="button" id="zero" class="operand grid-item" onclick="inputNumber('0')">0</button>
+        <button type="button" class="decimal grid-item" onclick="inputDecimal('.')">.</button>
+        <button type="button" class="equals grid-item" onclick="inputEquals('=')">=</button>
       </div>
 
     </main>
