@@ -57,7 +57,7 @@ const inputOperator = (operator) => {
     secondOperator = operator;
     valueB = displayValue;
     result = operate(firstOperator, Number(valueA), Number(valueB));
-    displayValue = roundAccurately(result, 15).toString();
+    displayValue = roundAccurately(result, 10).toString();
     valueA = displayValue;
     result = null;
   }
@@ -67,7 +67,7 @@ const inputOperator = (operator) => {
     valueB = displayValue;
     result = operate(secondOperator, Number(valueA), Number(valueB));
     secondOperator = operator;
-    displayValue = roundAccurately(result, 15).toString();
+    displayValue = roundAccurately(result, 10).toString();
     valueA = displayValue;
     result = null;
   }
@@ -76,6 +76,7 @@ const inputOperator = (operator) => {
 };
 
 const inputEquals = () => {
+  console.log(secondOperator);
   //hitting equals doesn't display undefined before operate()
   if (firstOperator === null) {
     displayValue = displayValue;
@@ -86,7 +87,7 @@ const inputEquals = () => {
     if (result === "nope") {
       displayValue = "nope";
     } else {
-      displayValue = roundAccurately(result, 15).toString();
+      displayValue = roundAccurately(result, 10).toString();
       valueA = displayValue;
       valueB = null;
       firstOperator = null;
@@ -97,10 +98,10 @@ const inputEquals = () => {
     //handles first operation
     valueB = displayValue;
     result = operate(firstOperator, Number(valueA), Number(valueB));
-    if (result === "lmao") {
-      displayValue = "lmao";
+    if (result === "nope") {
+      displayValue = "nope";
     } else {
-      displayValue = roundAccurately(result, 15).toString();
+      displayValue = roundAccurately(result, 10).toString();
       valueA = displayValue;
       valueB = null;
       firstOperator = null;
@@ -132,7 +133,7 @@ const inputSign = () => {
 };
 
 const clearDisplay = () => {
-  displayValue = "0";
+  displayValue = 0;
   valueA = null;
   valueB = null;
   firstOperator = null;
