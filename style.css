@@ -2,17 +2,17 @@
 
 :root {
   --lynx-white: #f7f9f7;
-  --plain-and-simple: #eaf2d7;
-  --lynch: #6c7a89;
-  --shark: #24252a;
-  --pickled-bluewood: #34495e;
+  --cadet: #5e747f;
+  --light-pink: #FBB7C0;
+  --amaranth-purple: #B6244F;
+  --rich-black: #061826;
 }
 
 body {
   margin: 0;
   font-family: "Roboto";
   background-color: var(--lynx-white);
-  color: var(--shark);
+  color: var(--rich-black);
   min-height: 100vh;
   height: 100%;
   position: relative;
@@ -26,7 +26,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background-color: var(--plain-and-simple);
+  background-color: var(--light-pink)
 }
 
 header a {
@@ -35,16 +35,17 @@ header a {
   text-decoration: none;
   gap: 10px;
   font-size: 20px;
-  color: var(--pickled-bluewood);
+  color: var(--rich-black);
   font-weight: lighter;
 }
 
 main {
   text-align: center;
+  margin: auto;
 }
 
 footer {
-  background-color: var(--plain-and-simple);
+  background-color: var(--light-pink);
   padding: 20px 50px;
   text-align: center;
 }
@@ -63,5 +64,65 @@ footer a {
 }
 
 footer a small {
-  color: var(--lynch);
+  color: var(--cadet);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+  width: min-content;
+  gap: 3px;
+}
+
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  min-width: 100px;
+}
+
+#calculator {
+  background-color: var(--rich-black);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#display {
+  grid-column: span 4;
+  background-color: var(--lynx-white);
+  margin-bottom: 10px;
+  border: 10px solid var(--cadet);
+  font-size: 50px;
+  padding: 8px;
+  text-align: right;
+}
+
+#zero {
+  grid-column: span 2;
+}
+
+button {
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+}
+
+button:hover {
+  opacity: 80%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.operand, .decimal {
+  background-color: var(--cadet);
+}
+
+.clear, .sign, .percent {
+  background-color: var(--light-pink);
+  
+}
+
+.operator, .equals {
+  background-color: var(--amaranth-purple);
 }
