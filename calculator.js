@@ -30,11 +30,9 @@ let result = null;
 const updateDisplay = () => {
   document.getElementById("display").innerText = displayValue;
 };
-
 updateDisplay();
 
 const inputNumber = (number) => {
-  // displayValue += number;
   // If first operator is null it means we are still inputing value A
   if (firstOperator === null) {
     displayValue === 0 ? (displayValue = number) : (displayValue += number);
@@ -49,21 +47,25 @@ const inputNumber = (number) => {
 const inputOperator = (operator) => {
   // Input first operator
   if (!firstOperator && !secondOperator) {
-    firstOperator = operator;
     valueA = displayValue;
+    firstOperator = operator;
   }
   // Input second operator
   else if (firstOperator && !secondOperator) {
-    secondOperator = operator;
-    valueB = displayValue;
-    result = operate(firstOperator, Number(valueA), Number(valueB));
-    displayValue = roundAccurately(result, 10).toString();
-    valueA = displayValue;
-    result = null;
+    // If displayValue is different than valueA then we did input valueB and this is a second operator, otherwise we are inputing new first operator
+    if (displayValue !== valueA) {
+      secondOperator = operator;
+      valueB = displayValue;
+      result = operate(firstOperator, Number(valueA), Number(valueB));
+      displayValue = roundAccurately(result, 10).toString();
+      valueA = displayValue;
+      result = null;
+    } else {
+      firstOperator = operator;
+    }
   }
-  // New second operator
-  else {
-    console.log("operator");
+  // Else we want a new second operator
+  else if (firstOperator && secondOperator) {
     valueB = displayValue;
     result = operate(secondOperator, Number(valueA), Number(valueB));
     secondOperator = operator;
@@ -71,12 +73,10 @@ const inputOperator = (operator) => {
     valueA = displayValue;
     result = null;
   }
-
   updateDisplay();
 };
 
 const inputEquals = () => {
-  console.log(secondOperator);
   //hitting equals doesn't display undefined before operate()
   if (firstOperator === null) {
     displayValue = displayValue;
@@ -116,7 +116,7 @@ const inputDecimal = (dot) => {
   if (displayValue === valueA || displayValue === valueB) {
     displayValue = "0";
     displayValue += dot;
-  } else if (!displayValue.includes(dot)) {
+  } else if (!displayValue.toString().includes(dot)) {
     displayValue += dot;
   }
   updateDisplay();
