@@ -28,7 +28,12 @@ let secondOperator = null;
 let result = null;
 
 const updateDisplay = () => {
-  document.getElementById("display").innerText = displayValue;
+  document.getElementById("expression").innerText = secondOperator
+    ? valueA + " " + secondOperator
+    : valueA
+    ? valueA
+    : 0;
+  document.getElementById("currentValue").innerText = displayValue;
 };
 updateDisplay();
 
