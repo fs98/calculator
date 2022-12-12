@@ -77,11 +77,9 @@ const inputOperator = (operator) => {
 };
 
 const inputEquals = () => {
-  //hitting equals doesn't display undefined before operate()
   if (firstOperator === null) {
     displayValue = displayValue;
   } else if (secondOperator != null) {
-    //handles final result
     valueB = displayValue;
     result = operate(secondOperator, Number(valueA), Number(valueB));
     if (result === "nope") {
@@ -95,7 +93,6 @@ const inputEquals = () => {
       result = null;
     }
   } else {
-    //handles first operation
     valueB = displayValue;
     result = operate(firstOperator, Number(valueA), Number(valueB));
     if (result === "nope") {
