@@ -35,12 +35,19 @@ updateDisplay();
 const inputNumber = (number) => {
   // If first operator is null it means we are still inputing value A
   if (firstOperator === null) {
-    displayValue === 0 ? (displayValue = number) : (displayValue += number);
+    if (displayValue == 0) {
+      displayValue = number;
+    } else {
+      displayValue += number;
+    }
   } else {
-    displayValue === valueA
-      ? (displayValue = number)
-      : (displayValue += number);
+    if (displayValue === valueA) {
+      displayValue = number;
+    } else {
+      displayValue += number;
+    }
   }
+
   updateDisplay();
 };
 
@@ -57,7 +64,7 @@ const inputOperator = (operator) => {
       secondOperator = operator;
       valueB = displayValue;
       result = operate(firstOperator, Number(valueA), Number(valueB));
-      displayValue = roundAccurately(result, 10).toString();
+      displayValue = roundAccurately(result, 6).toString();
       valueA = displayValue;
       result = null;
     } else {
@@ -69,7 +76,7 @@ const inputOperator = (operator) => {
     valueB = displayValue;
     result = operate(secondOperator, Number(valueA), Number(valueB));
     secondOperator = operator;
-    displayValue = roundAccurately(result, 10).toString();
+    displayValue = roundAccurately(result, 6).toString();
     valueA = displayValue;
     result = null;
   }
@@ -85,7 +92,7 @@ const inputEquals = () => {
     if (result === "nope") {
       displayValue = "nope";
     } else {
-      displayValue = roundAccurately(result, 10).toString();
+      displayValue = roundAccurately(result, 6).toString();
       valueA = displayValue;
       valueB = null;
       firstOperator = null;
@@ -98,7 +105,7 @@ const inputEquals = () => {
     if (result === "nope") {
       displayValue = "nope";
     } else {
-      displayValue = roundAccurately(result, 10).toString();
+      displayValue = roundAccurately(result, 6).toString();
       valueA = displayValue;
       valueB = null;
       firstOperator = null;
