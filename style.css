@@ -94,13 +94,24 @@ footer a small {
   background-color: var(--lynx-white);
   margin-bottom: 10px;
   border: 10px solid var(--cadet);
-  font-size: 50px;
   padding: 8px;
   text-align: right;
 }
 
 #zero {
   grid-column: span 2;
+}
+
+.grid-container :first-child h6 {
+  margin: 0;
+}
+
+.grid-container > .grid-item :first-child {
+  font-weight: lighter;
+}
+
+.grid-container > .grid-item :nth-child(2) {
+  font-size: 50px;
 }
 
 button {
