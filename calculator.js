@@ -70,3 +70,15 @@ const inputDecimal = (dot) => {
 
   updateDisplay();
 };
+
+const inputPercent = () => {
+  displayValue = (displayValue / 100).toString();
+
+  if (!operator) {
+    valueA = displayValue;
+  } else {
+    valueB = displayValue;
+  }
+
+  updateDisplay();
+};
