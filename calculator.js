@@ -80,3 +80,12 @@ const inputSign = () => {
   displayValue = (displayValue * -1).toString();
   updateDisplay();
 };
+
+const clearDisplay = () => {
+  displayValue = "";
+  valueA = "";
+  valueB = "";
+  operator = "";
+  result = null;
+  updateDisplay();
+};
