@@ -2,4 +2,4 @@
 
 ## Calculator
 
-The fourth assignment in a Brainnest Front Training Program - JavaScript Assignment - Part 2
+The fourth assignment in a Brainnest Frontend Training Program - JavaScript Assignment - Part 2
