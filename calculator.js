@@ -1,12 +1,16 @@
-let displayValue = 0;
-let valueA = null;
-let valueB = null;
-let operator = null;
+let displayValue = "";
+let valueA = "";
+let valueB = "";
+let operator = "";
 let result = null;
 
-const updateDisplay = (() => {
-  document.getElementById("display").innerText = displayValue;
-})();
+const updateDisplay = () => {
+  document.getElementById("display").innerText = displayValue
+    ? displayValue
+    : 0;
+};
+
+updateDisplay();
 
 const round = (value) => {
   return parseFloat(Math.round(value + "e6") + "e-6");
@@ -32,4 +36,17 @@ const operate = (valueA, valueB, operator) => {
     default:
       break;
   }
+};
+
+const inputNumber = (number) => {
+  // If first operator is null it means we are still inputing value A
+  if (operator === null) {
+    valueA += number;
+    displayValue = valueA;
+  } else {
+    valueB += number;
+    displayValue = valueB;
+  }
+
+  updateDisplay();
 };
