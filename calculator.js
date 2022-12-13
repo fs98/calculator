@@ -89,3 +89,31 @@ const clearDisplay = () => {
   result = null;
   updateDisplay();
 };
+
+const inputEquals = () => {
+  console.log("You pressed equals!");
+  console.table({
+    valueA,
+    valueB,
+    operator,
+  });
+
+  if (operator) {
+    if (!valueB) {
+      // If value B is empty consider it same as value A
+      valueB = valueA;
+    }
+
+    result = operate(Number(valueA), Number(valueB), operator);
+    displayValue = result;
+
+    if (result !== "nope") {
+      valueA = result;
+      valueB = null;
+      operator = null;
+      result = null;
+    }
+  }
+
+  updateDisplay();
+};
