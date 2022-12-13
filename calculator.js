@@ -73,12 +73,10 @@ const inputDecimal = (dot) => {
 
 const inputPercent = () => {
   displayValue = (displayValue / 100).toString();
+  updateDisplay();
+};
 
-  if (!operator) {
-    valueA = displayValue;
-  } else {
-    valueB = displayValue;
-  }
-
+const inputSign = () => {
+  displayValue = (displayValue * -1).toString();
   updateDisplay();
 };
