@@ -40,12 +40,32 @@ const operate = (valueA, valueB, operator) => {
 
 const inputNumber = (number) => {
   // If first operator is null it means we are still inputing value A
-  if (operator === null) {
+  if (!operator) {
     valueA += number;
     displayValue = valueA;
   } else {
     valueB += number;
     displayValue = valueB;
+  }
+
+  updateDisplay();
+};
+
+const inputDecimal = (dot) => {
+  if (!displayValue) {
+    valueA = "0";
+    valueA += dot;
+    displayValue = valueA;
+  }
+
+  if (!displayValue.includes(dot)) {
+    if (displayValue === valueA) {
+      valueA += dot;
+      displayValue = valueA;
+    } else if (displayValue === valueB) {
+      valueB += dot;
+      displayValue = valueB;
+    }
   }
 
   updateDisplay();
