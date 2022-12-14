@@ -13,10 +13,13 @@ const updateDisplay = () => {
 updateDisplay();
 
 const roundResult = (value) => {
-  return parseFloat(Math.round(value + "e6") + "e-6");
+  return parseFloat(Math.round(value + "e6") + "e-6").toString();
 };
 
 const operate = (valueA, valueB, operator) => {
+  valueA = Number(valueA);
+  valueB = Number(valueB);
+
   switch (operator) {
     case "+":
       return roundResult(valueA + valueB);
@@ -32,9 +35,6 @@ const operate = (valueA, valueB, operator) => {
         return "nope";
       }
       return roundResult(valueA / valueB);
-
-    default:
-      break;
   }
 };
 
@@ -42,15 +42,15 @@ const inputNumber = (number) => {
   // If operator is null it means we are still inputing value A
   if (!operator) {
     displayValue += number;
-    valueA = displayValue.toString();
+    valueA = displayValue;
   } else {
     if (!valueB) {
       displayValue = number;
-      valueB = displayValue.toString();
+      valueB = displayValue;
     } else {
       displayValue += number;
       displayValue = parseFloat(displayValue);
-      valueB = displayValue.toString();
+      valueB = displayValue;
     }
   }
   updateDisplay();
@@ -80,8 +80,8 @@ const inputPercent = () => {
   displayValue = (displayValue / 100).toString();
 
   if (!valueB) {
-    valueA = displayValue.toString();
-  } else valueB = displayValue.toString();
+    valueA = displayValue;
+  } else valueB = displayValue;
 
   updateDisplay();
 };
@@ -90,8 +90,8 @@ const inputSign = () => {
   displayValue = (displayValue * -1).toString();
 
   if (!valueB) {
-    valueA = displayValue.toString();
-  } else valueB = displayValue.toString();
+    valueA = displayValue;
+  } else valueB = displayValue;
 
   updateDisplay();
 };
@@ -106,11 +106,11 @@ const clearDisplay = () => {
 };
 
 const handleResult = () => {
-  result = operate(Number(valueA), Number(valueB), operator);
-  displayValue = result.toString();
+  result = operate(valueA, valueB, operator);
+  displayValue = result;
 
   if (result !== "nope") {
-    valueA = result.toString();
+    valueA = result;
     valueB = null;
     operator = null;
     result = null;
@@ -130,7 +130,7 @@ const inputEquals = () => {
 const inputOperator = (operation) => {
   if (!valueB) {
     // This is a first operator
-    valueA = displayValue.toString() ? displayValue : "0";
+    valueA = displayValue ? displayValue : "0";
     operator = operation;
   } else {
     handleResult();
