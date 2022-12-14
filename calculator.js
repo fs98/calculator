@@ -8,6 +8,12 @@ const updateDisplay = () => {
   document.getElementById("display").innerText = displayValue
     ? displayValue
     : 0;
+
+  console.table({
+    valueA,
+    valueB,
+    operator,
+  });
 };
 
 updateDisplay();
@@ -39,15 +45,20 @@ const operate = (valueA, valueB, operator) => {
 };
 
 const inputNumber = (number) => {
-  // If first operator is null it means we are still inputing value A
+  // If operator is null it means we are still inputing value A
   if (!operator) {
-    valueA += number;
-    displayValue = valueA;
+    displayValue += number;
+    valueA = displayValue.toString();
   } else {
-    valueB += number;
-    displayValue = valueB;
+    if (!valueB) {
+      displayValue = number;
+      valueB = displayValue.toString();
+    } else {
+      displayValue += number;
+      displayValue = parseFloat(displayValue);
+      valueB = displayValue.toString();
+    }
   }
-
   updateDisplay();
 };
 
@@ -73,11 +84,21 @@ const inputDecimal = (dot) => {
 
 const inputPercent = () => {
   displayValue = (displayValue / 100).toString();
+
+  if (!valueB) {
+    valueA = displayValue.toString();
+  } else valueB = displayValue.toString();
+
   updateDisplay();
 };
 
 const inputSign = () => {
   displayValue = (displayValue * -1).toString();
+
+  if (!valueB) {
+    valueA = displayValue.toString();
+  } else valueB = displayValue.toString();
+
   updateDisplay();
 };
 
@@ -90,30 +111,36 @@ const clearDisplay = () => {
   updateDisplay();
 };
 
-const inputEquals = () => {
-  console.log("You pressed equals!");
-  console.table({
-    valueA,
-    valueB,
-    operator,
-  });
+const handleResult = () => {
+  result = operate(Number(valueA), Number(valueB), operator);
+  displayValue = result.toString();
 
+  if (result !== "nope") {
+    valueA = result.toString();
+    valueB = null;
+    operator = null;
+    result = null;
+  }
+};
+
+const inputEquals = () => {
   if (operator) {
     if (!valueB) {
-      // If value B is empty consider it same as value A
-      valueB = valueA;
+      valueB = valueA; // If value B is empty consider it same as value A
     }
-
-    result = operate(Number(valueA), Number(valueB), operator);
-    displayValue = result;
-
-    if (result !== "nope") {
-      valueA = result;
-      valueB = null;
-      operator = null;
-      result = null;
-    }
+    handleResult();
   }
+  updateDisplay();
+};
 
+const inputOperator = (operation) => {
+  if (!valueB) {
+    // This is a first operator
+    valueA = displayValue.toString() ? displayValue : "0";
+    operator = operation;
+  } else {
+    handleResult();
+    operator = operation;
+  }
   updateDisplay();
 };
