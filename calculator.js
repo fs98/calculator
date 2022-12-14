@@ -8,36 +8,30 @@ const updateDisplay = () => {
   document.getElementById("display").innerText = displayValue
     ? displayValue
     : 0;
-
-  console.table({
-    valueA,
-    valueB,
-    operator,
-  });
 };
 
 updateDisplay();
 
-const round = (value) => {
+const roundResult = (value) => {
   return parseFloat(Math.round(value + "e6") + "e-6");
 };
 
 const operate = (valueA, valueB, operator) => {
   switch (operator) {
     case "+":
-      return round(valueA + valueB);
+      return roundResult(valueA + valueB);
 
     case "-":
-      return round(valueA - valueB);
+      return roundResult(valueA - valueB);
 
     case "*":
-      return round(valueA * valueB);
+      return roundResult(valueA * valueB);
 
     case "/":
       if (valueB === 0) {
         return "nope";
       }
-      return round(valueA / valueB);
+      return roundResult(valueA / valueB);
 
     default:
       break;
