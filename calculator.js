@@ -8,12 +8,6 @@ const updateDisplay = () => {
   document.getElementById("display").innerText = displayValue
     ? displayValue
     : 0;
-
-  console.table({
-    valueA,
-    valueB,
-    displayValue,
-  });
 };
 
 updateDisplay();
