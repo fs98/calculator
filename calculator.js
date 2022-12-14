@@ -173,6 +173,7 @@ const VALUES = [
   "/",
   "Enter",
   "Escape",
+  "Backspace",
 ];
 
 // Keyboard support
@@ -209,6 +210,10 @@ document.addEventListener("keydown", (event) => {
 
       case "Escape":
         clearDisplay();
+        break;
+
+      case "Backspace":
+        inputBackspace();
         break;
 
       default:
