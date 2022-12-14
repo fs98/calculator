@@ -83,13 +83,13 @@ footer a small {
   min-width: 100px;
 }
 
-#calculator {
+.calculator {
   background-color: var(--rich-black);
   padding: 20px;
   border-radius: 5px;
 }
 
-#display {
+.display {
   grid-column: span 4;
   background-color: var(--lynx-white);
   margin-bottom: 10px;
@@ -99,7 +99,7 @@ footer a small {
   font-size: 50px;
 }
 
-#zero {
+.grid-container :nth-child(18) {
   grid-column: span 2;
 }
 
@@ -145,12 +145,12 @@ button:hover {
     min-width: 70px;
   }
 
-  #calculator {
+  .calculator {
     padding: 10px;
     border-radius: 5px;
   }
   
-  #display {
+  .display {
     font-size: 40px;
     padding: 6px;
     text-align: right;
