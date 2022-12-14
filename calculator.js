@@ -1,156 +1,146 @@
-const operate = (operator, valueA, valueB) => {
+let displayValue = "";
+let valueA = "";
+let valueB = "";
+let operator = "";
+let result = null;
+
+const updateDisplay = () => {
+  document.getElementById("display").innerText = displayValue
+    ? displayValue
+    : 0;
+
+  console.table({
+    valueA,
+    valueB,
+    operator,
+  });
+};
+
+updateDisplay();
+
+const round = (value) => {
+  return parseFloat(Math.round(value + "e6") + "e-6");
+};
+
+const operate = (valueA, valueB, operator) => {
   switch (operator) {
     case "+":
-      return valueA + valueB;
+      return round(valueA + valueB);
 
     case "-":
-      return valueA - valueB;
+      return round(valueA - valueB);
 
     case "*":
-      return valueA * valueB;
+      return round(valueA * valueB);
 
     case "/":
       if (valueB === 0) {
         return "nope";
       }
-      return valueA / valueB;
+      return round(valueA / valueB);
 
     default:
       break;
   }
 };
 
-let displayValue = 0;
-let valueA = "";
-let valueB = "";
-let firstOperator = null;
-let secondOperator = null;
-let result = null;
-
-const updateDisplay = () => {
-  document.getElementById("expression").innerText = secondOperator
-    ? valueA + " " + secondOperator
-    : valueA
-    ? valueA
-    : 0;
-  document.getElementById("currentValue").innerText = displayValue;
-};
-updateDisplay();
-
 const inputNumber = (number) => {
-  // If first operator is null it means we are still inputing value A
-  if (firstOperator === null) {
-    if (displayValue == 0) {
+  // If operator is null it means we are still inputing value A
+  if (!operator) {
+    displayValue += number;
+    valueA = displayValue.toString();
+  } else {
+    if (!valueB) {
       displayValue = number;
+      valueB = displayValue.toString();
     } else {
       displayValue += number;
-    }
-  } else {
-    if (displayValue === valueA) {
-      displayValue = number;
-    } else {
-      displayValue += number;
-    }
-  }
-
-  updateDisplay();
-};
-
-const inputOperator = (operator) => {
-  // Input first operator
-  if (!firstOperator && !secondOperator) {
-    valueA = displayValue;
-    firstOperator = operator;
-  }
-  // Input second operator
-  else if (firstOperator && !secondOperator) {
-    // If displayValue is different than valueA then we did input valueB and this is a second operator, otherwise we are inputing new first operator
-    if (displayValue !== valueA) {
-      secondOperator = operator;
-      valueB = displayValue;
-      result = operate(firstOperator, Number(valueA), Number(valueB));
-      displayValue = roundAccurately(result, 6).toString();
-      valueA = displayValue;
-      result = null;
-    } else {
-      firstOperator = operator;
-    }
-  }
-  // Else we want a new second operator
-  else if (firstOperator && secondOperator) {
-    valueB = displayValue;
-    result = operate(secondOperator, Number(valueA), Number(valueB));
-    secondOperator = operator;
-    displayValue = roundAccurately(result, 6).toString();
-    valueA = displayValue;
-    result = null;
-  }
-  updateDisplay();
-};
-
-const inputEquals = () => {
-  if (firstOperator === null) {
-    displayValue = displayValue;
-  } else if (secondOperator != null) {
-    valueB = displayValue;
-    result = operate(secondOperator, Number(valueA), Number(valueB));
-    if (result === "nope") {
-      displayValue = "nope";
-    } else {
-      displayValue = roundAccurately(result, 6).toString();
-      valueA = displayValue;
-      valueB = null;
-      firstOperator = null;
-      secondOperator = null;
-      result = null;
-    }
-  } else {
-    valueB = displayValue;
-    result = operate(firstOperator, Number(valueA), Number(valueB));
-    if (result === "nope") {
-      displayValue = "nope";
-    } else {
-      displayValue = roundAccurately(result, 6).toString();
-      valueA = displayValue;
-      valueB = null;
-      firstOperator = null;
-      secondOperator = null;
-      result = null;
+      displayValue = parseFloat(displayValue);
+      valueB = displayValue.toString();
     }
   }
   updateDisplay();
 };
 
 const inputDecimal = (dot) => {
-  if (displayValue === valueA || displayValue === valueB) {
-    displayValue = "0";
-    displayValue += dot;
-  } else if (!displayValue.toString().includes(dot)) {
-    displayValue += dot;
+  if (!displayValue) {
+    valueA = "0";
+    valueA += dot;
+    displayValue = valueA;
   }
+
+  if (!displayValue.includes(dot)) {
+    if (displayValue === valueA) {
+      valueA += dot;
+      displayValue = valueA;
+    } else if (displayValue === valueB) {
+      valueB += dot;
+      displayValue = valueB;
+    }
+  }
+
   updateDisplay();
 };
 
 const inputPercent = () => {
   displayValue = (displayValue / 100).toString();
+
+  if (!valueB) {
+    valueA = displayValue.toString();
+  } else valueB = displayValue.toString();
+
   updateDisplay();
 };
 
 const inputSign = () => {
   displayValue = (displayValue * -1).toString();
+
+  if (!valueB) {
+    valueA = displayValue.toString();
+  } else valueB = displayValue.toString();
+
   updateDisplay();
 };
 
 const clearDisplay = () => {
-  displayValue = 0;
-  valueA = null;
-  valueB = null;
-  firstOperator = null;
-  secondOperator = null;
+  displayValue = "";
+  valueA = "";
+  valueB = "";
+  operator = "";
   result = null;
   updateDisplay();
 };
 
-const roundAccurately = (value, places) => {
-  return parseFloat(Math.round(value + "e" + places) + "e-" + places);
+const handleResult = () => {
+  result = operate(Number(valueA), Number(valueB), operator);
+  displayValue = result.toString();
+
+  if (result !== "nope") {
+    valueA = result.toString();
+    valueB = null;
+    operator = null;
+    result = null;
+  }
+};
+
+const inputEquals = () => {
+  if (operator) {
+    if (!valueB) {
+      valueB = valueA; // If value B is empty consider it same as value A
+    }
+    handleResult();
+  }
+  updateDisplay();
+};
+
+const inputOperator = (operation) => {
+  if (!valueB) {
+    // This is a first operator
+    valueA = displayValue.toString() ? displayValue : "0";
+    operator = operation;
+  } else {
+    handleResult();
+    operator = operation;
+  }
+  updateDisplay();
 };

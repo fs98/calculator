@@ -96,22 +96,11 @@ footer a small {
   border: 10px solid var(--cadet);
   padding: 8px;
   text-align: right;
+  font-size: 50px;
 }
 
 #zero {
   grid-column: span 2;
-}
-
-.grid-container :first-child h6 {
-  margin: 0;
-}
-
-.grid-container > .grid-item :first-child {
-  font-weight: lighter;
-}
-
-.grid-container > .grid-item :nth-child(2) {
-  font-size: 50px;
 }
 
 button {
