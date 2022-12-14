@@ -41,16 +41,20 @@ const operate = (valueA, valueB, operator) => {
 const inputNumber = (number) => {
   // If operator is null it means we are still inputing value A
   if (!operator) {
-    displayValue += number;
-    valueA = displayValue;
+    if (displayValue.length < 10) {
+      displayValue += number;
+      valueA = displayValue;
+    }
   } else {
     if (!valueB) {
       displayValue = number;
       valueB = displayValue;
     } else {
-      displayValue += number;
-      displayValue = parseFloat(displayValue);
-      valueB = displayValue;
+      if (displayValue.toString().length < 10) {
+        displayValue += number;
+        displayValue = parseFloat(displayValue);
+        valueB = displayValue;
+      }
     }
   }
   updateDisplay();
@@ -63,7 +67,10 @@ const inputDecimal = (dot) => {
     displayValue = valueA;
   }
 
-  if (!displayValue.toString().includes(dot)) {
+  if (
+    !displayValue.toString().includes(dot) &&
+    displayValue.toString().length <= 8
+  ) {
     if (displayValue === valueA) {
       valueA += dot;
       displayValue = valueA;
