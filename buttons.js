@@ -15,9 +15,9 @@ const BUTTONS_LIST = [
     text: "%",
   },
   {
-    classes: "operator",
-    onclick: () => inputOperator("/"),
-    text: "/",
+    classes: "backspace",
+    onclick: inputBackspace,
+    text: "DEL",
   },
   {
     classes: "operand",
@@ -34,10 +34,11 @@ const BUTTONS_LIST = [
     onclick: () => inputNumber("9"),
     text: "9",
   },
+
   {
     classes: "operator",
-    onclick: () => inputOperator("*"),
-    text: "*",
+    onclick: () => inputOperator("/"),
+    text: "/",
   },
   {
     classes: "operand",
@@ -56,8 +57,8 @@ const BUTTONS_LIST = [
   },
   {
     classes: "operator",
-    onclick: () => inputOperator("-"),
-    text: "-",
+    onclick: () => inputOperator("*"),
+    text: "*",
   },
   {
     classes: "operand",
@@ -76,8 +77,14 @@ const BUTTONS_LIST = [
   },
   {
     classes: "operator",
-    onclick: () => inputOperator("+"),
-    text: "+",
+    onclick: () => inputOperator("-"),
+    text: "-",
+  },
+
+  {
+    classes: "decimal",
+    onclick: () => inputDecimal("."),
+    text: ".",
   },
   {
     classes: "operand",
@@ -85,14 +92,15 @@ const BUTTONS_LIST = [
     text: "0",
   },
   {
-    classes: "decimal",
-    onclick: () => inputDecimal("."),
-    text: ".",
-  },
-  {
     classes: "equals",
     onclick: () => inputEquals("="),
     text: "=",
+  },
+
+  {
+    classes: "operator",
+    onclick: () => inputOperator("+"),
+    text: "+",
   },
 ];
 

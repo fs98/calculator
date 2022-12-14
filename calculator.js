@@ -127,6 +127,10 @@ const inputEquals = () => {
   updateDisplay();
 };
 
+const inputBackspace = () => {
+  console.log("Backspace clicked");
+};
+
 const inputOperator = (operation) => {
   if (!valueB) {
     // This is a first operator

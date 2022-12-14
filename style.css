@@ -99,10 +99,6 @@ footer a small {
   font-size: 50px;
 }
 
-.grid-container :nth-child(18) {
-  grid-column: span 2;
-}
-
 button {
   border-radius: 5px;
   box-shadow: none;
@@ -120,7 +116,7 @@ button:hover {
   background-color: var(--cadet);
 }
 
-.clear, .sign, .percent {
+.clear, .sign, .percent, .backspace {
   background-color: var(--light-pink);
   
 }
