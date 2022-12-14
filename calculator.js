@@ -8,6 +8,12 @@ const updateDisplay = () => {
   document.getElementById("display").innerText = displayValue
     ? displayValue
     : 0;
+
+  console.table({
+    valueA,
+    valueB,
+    displayValue,
+  });
 };
 
 updateDisplay();
@@ -63,7 +69,7 @@ const inputDecimal = (dot) => {
     displayValue = valueA;
   }
 
-  if (!displayValue.includes(dot)) {
+  if (!displayValue.toString().includes(dot)) {
     if (displayValue === valueA) {
       valueA += dot;
       displayValue = valueA;
@@ -128,7 +134,11 @@ const inputEquals = () => {
 };
 
 const inputBackspace = () => {
-  console.log("Backspace clicked");
+  displayValue = displayValue.toString().slice(0, -1);
+  if (!valueB) {
+    valueA = displayValue;
+  } else valueB = displayValue;
+  updateDisplay();
 };
 
 const inputOperator = (operation) => {
