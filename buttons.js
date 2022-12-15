@@ -83,7 +83,7 @@ const BUTTONS_LIST = [
 
   {
     classes: "decimal",
-    onclick: () => inputDecimal("."),
+    onclick: inputDecimal,
     text: ".",
   },
   {

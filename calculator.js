@@ -60,22 +60,22 @@ const inputNumber = (number) => {
   updateDisplay();
 };
 
-const inputDecimal = (dot) => {
+const inputDecimal = () => {
   if (!displayValue) {
     valueA = "0";
-    valueA += dot;
+    valueA += ".";
     displayValue = valueA;
   }
 
   if (
-    !displayValue.toString().includes(dot) &&
+    !displayValue.toString().includes(".") &&
     displayValue.toString().length <= 8
   ) {
     if (displayValue === valueA) {
-      valueA += dot;
+      valueA += ".";
       displayValue = valueA;
     } else if (displayValue === valueB) {
-      valueB += dot;
+      valueB += ".";
       displayValue = valueB;
     }
   }
@@ -181,7 +181,7 @@ document.addEventListener("keydown", (event) => {
   if (VALUES.includes(event.key)) {
     switch (event.key) {
       case ".":
-        inputDecimal(".");
+        inputDecimal;
         break;
 
       case "%":
