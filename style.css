@@ -112,7 +112,7 @@ button:hover {
   cursor: pointer;
 }
 
-.operand, .decimal {
+.operand, .decimal, .equals {
   background-color: var(--cadet);
 }
 
@@ -121,7 +121,7 @@ button:hover {
   
 }
 
-.operator, .equals {
+.operator {
   background-color: var(--amaranth-purple);
 }
 
