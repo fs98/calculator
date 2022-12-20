@@ -64,6 +64,8 @@ class Calculator {
         }
       }
     }
+
+    this.updateDisplay();
   };
 
   inputSign = () => {
@@ -71,7 +73,11 @@ class Calculator {
 
     if (!this.valueB) {
       this.valueA = this.displayValue;
-    } else this.valueB = this.displayValue;
+    } else {
+      this.valueB = this.displayValue;
+    }
+
+    this.updateDisplay();
   };
 
   inputPercent = () => {
@@ -79,7 +85,11 @@ class Calculator {
 
     if (!this.valueB) {
       this.valueA = this.displayValue;
-    } else this.valueB = this.displayValue;
+    } else {
+      this.valueB = this.displayValue;
+    }
+
+    this.updateDisplay();
   };
 
   inputDecimal = () => {
@@ -101,6 +111,8 @@ class Calculator {
         this.displayValue = this.valueB;
       }
     }
+
+    this.updateDisplay();
   };
 
   inputEquals = () => {
@@ -110,10 +122,43 @@ class Calculator {
       }
       this.handleResult();
     }
+
+    this.updateDisplay();
+  };
+
+  inputBackspace = () => {
+    this.displayValue = this.displayValue.toString().slice(0, -1);
+    if (!this.valueB) {
+      this.valueA = this.displayValue;
+    } else {
+      this.valueB = this.displayValue;
+    }
+
+    this.updateDisplay();
+  };
+
+  updateDisplay = () => {
+    document.getElementById("display").innerText = this.displayValue
+      ? this.displayValue
+      : 0;
+  };
+
+  inputOperator = (operation) => {
+    if (!this.valueB) {
+      // This is a first operator
+      this.valueA = this.displayValue ? this.displayValue : "0";
+      this.operator = operation;
+    } else {
+      this.handleResult();
+      this.operator = operation;
+    }
+
+    this.updateDisplay();
   };
 }
 
 const calculator = new Calculator();
+calculator.updateDisplay();
 
 calculator.valueA = "43.";
 calculator.displayValue = "43.";
