@@ -44,6 +44,14 @@ class Calculator {
       this.result = null;
     }
   };
+
+  inputSign = () => {
+    this.displayValue = (this.displayValue * -1).toString();
+
+    if (!this.valueB) {
+      this.valueA = this.displayValue;
+    } else this.valueB = this.displayValue;
+  };
 }
 
 const calculator = new Calculator();
