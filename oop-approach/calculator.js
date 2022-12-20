@@ -167,9 +167,11 @@ class Calculator {
 }
 
 const calculator = new Calculator();
+
+// Initialize parameters and update display
+calculator.displayValue = "";
+calculator.valueA = "";
+calculator.valueB = "";
+calculator.operator = "";
+calculator.result = null;
 calculator.updateDisplay();
-
-calculator.valueA = "43.";
-calculator.displayValue = "43.";
-
-console.log("After operating", calculator.displayValue);
