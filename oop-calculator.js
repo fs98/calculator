@@ -155,6 +155,15 @@ class Calculator {
 
     this.updateDisplay();
   };
+
+  clearDisplay = () => {
+    this.displayValue = "";
+    this.valueA = "";
+    this.valueB = "";
+    this.operator = "";
+    this.result = null;
+    this.updateDisplay();
+  };
 }
 
 const calculator = new Calculator();
