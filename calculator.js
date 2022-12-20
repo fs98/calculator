@@ -41,6 +41,10 @@ const operate = (valueA, valueB, operator) => {
 const inputNumber = (number) => {
   // If operator is null it means we are still inputing value A
   if (!operator) {
+    if (number == 0) {
+      return;
+    }
+
     if (displayValue.length < 10) {
       displayValue += number;
       valueA = displayValue;
@@ -52,7 +56,7 @@ const inputNumber = (number) => {
     } else {
       if (displayValue.toString().length < 10) {
         displayValue += number;
-        displayValue = parseFloat(displayValue);
+        displayValue = parseFloat(displayValue).toString();
         valueB = displayValue;
       }
     }
