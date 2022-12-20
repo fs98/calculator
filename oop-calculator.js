@@ -60,15 +60,32 @@ class Calculator {
       this.valueA = this.displayValue;
     } else this.valueB = this.displayValue;
   };
+
+  inputDecimal = () => {
+    if (!this.displayValue) {
+      this.valueA = "0";
+      this.valueA += ".";
+      this.displayValue = this.valueA;
+    }
+
+    if (
+      !this.displayValue.toString().includes(".") &&
+      this.displayValue.toString().length <= 8
+    ) {
+      if (this.displayValue === this.valueA) {
+        this.valueA += ".";
+        this.displayValue = this.valueA;
+      } else if (this.displayValue === this.valueB) {
+        this.valueB += ".";
+        this.displayValue = this.valueB;
+      }
+    }
+  };
 }
 
 const calculator = new Calculator();
 
-calculator.valueA = "4";
-calculator.valueB = "10";
-calculator.operator = "*";
+calculator.valueA = "43.";
+calculator.displayValue = "43.";
 
-calculator.handleResult();
-calculator.inputPercent();
-
-console.log("After operating", calculator.valueA);
+console.log("After operating", calculator.displayValue);
