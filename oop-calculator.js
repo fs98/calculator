@@ -102,6 +102,15 @@ class Calculator {
       }
     }
   };
+
+  inputEquals = () => {
+    if (this.operator) {
+      if (!this.valueB) {
+        this.valueB = this.valueA; // If value B is empty consider it same as value A
+      }
+      this.handleResult();
+    }
+  };
 }
 
 const calculator = new Calculator();
