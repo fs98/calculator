@@ -45,6 +45,27 @@ class Calculator {
     }
   };
 
+  inputNumber = (number) => {
+    // If operator is null it means we are still inputing value A
+    if (!this.operator) {
+      if (this.displayValue.length < 10) {
+        this.displayValue += number;
+        this.valueA = this.displayValue;
+      }
+    } else {
+      if (!this.valueB) {
+        this.displayValue = number;
+        this.valueB = this.displayValue;
+      } else {
+        if (this.displayValue.toString().length < 10) {
+          this.displayValue += number;
+          this.displayValue = parseFloat(this.displayValue);
+          this.valueB = this.displayValue;
+        }
+      }
+    }
+  };
+
   inputSign = () => {
     this.displayValue = (this.displayValue * -1).toString();
 
