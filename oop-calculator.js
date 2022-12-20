@@ -52,6 +52,14 @@ class Calculator {
       this.valueA = this.displayValue;
     } else this.valueB = this.displayValue;
   };
+
+  inputPercent = () => {
+    this.displayValue = (this.displayValue / 100).toString();
+
+    if (!this.valueB) {
+      this.valueA = this.displayValue;
+    } else this.valueB = this.displayValue;
+  };
 }
 
 const calculator = new Calculator();
@@ -61,5 +69,6 @@ calculator.valueB = "10";
 calculator.operator = "*";
 
 calculator.handleResult();
+calculator.inputPercent();
 
 console.log("After operating", calculator.valueA);
