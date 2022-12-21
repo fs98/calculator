@@ -45,3 +45,5 @@ The requirements:
 8.  _Advanced_: Add a “backspace” button, so the user can undo if they click the wrong number.
 
 9.  _Advanced_: Add keyboard support!
+
+Check it out by clicking on the link: [Calculator](https://fs98.github.io/calculator/)
